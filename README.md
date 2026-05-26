@@ -9,15 +9,7 @@ Instead of a traditional alignment chart, this tool represents a character as a 
 ## Live Demo
 
 **Deployment:**  
-[Add GitHub Pages URL Here]
-
-Example:
-
-```txt
-https://yourusername.github.io/ethical-compass/
-```
-
----
+https://ccxvr.github.io/TTRPG-Ethical-Compass/
 
 ## Overview
 
@@ -224,7 +216,3 @@ A lawful knight, pragmatic ruler, tragic revolutionary, or conflicted antihero c
 The goal is to support **roleplay depth**, not moral judgment.
 
 ---
-
-## License
-
-MIT License
