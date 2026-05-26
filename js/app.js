@@ -13,27 +13,27 @@ const axes = [
   {
     key: "rational",
     label: "Rational ↔ Emotional",
-    angleDeg: 330
+    angleDeg: 300
   },
   {
     key: "egoistic",
     label: "Egoistic ↔ Altruistic",
-    angleDeg: 30
+    angleDeg: 330
   },
   {
     key: "shortTerm",
     label: "Short-term ↔ Long-term",
-    angleDeg: 90
+    angleDeg: 0
   },
   {
     key: "particularist",
     label: "Particularist ↔ Universalist",
-    angleDeg: 150
+    angleDeg: 30
   },
   {
     key: "pragmatic",
     label: "Pragmatic ↔ Idealistic",
-    angleDeg: 210
+    angleDeg: 60
   }
 ];
 
