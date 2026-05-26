@@ -145,19 +145,29 @@ function generateFromQuiz() {
 
   quizQuestions.forEach(q => {
     const div = document.createElement("div");
+    div.className = "quiz-question";
 
     div.innerHTML = `
       <label>${q.text}</label>
-      <input
-        type="range"
-        min="-10"
-        max="10"
-        value="0"
-        step="1"
-        id="quiz-${q.axis}"
-      />
-      <span id="value-${q.axis}">0</span>
-      <hr>
+
+      <div class="quiz-slider-row">
+        <span>Disagree</span>
+
+        <input
+          type="range"
+          min="-10"
+          max="10"
+          value="0"
+          step="1"
+          id="quiz-${q.axis}"
+        />
+
+        <span>Agree</span>
+
+        <span class="quiz-value" id="value-${q.axis}">
+          0
+        </span>
+      </div>
     `;
 
     questionsDiv.appendChild(div);
