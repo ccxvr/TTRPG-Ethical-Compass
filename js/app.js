@@ -48,13 +48,6 @@ const axes = [
   }
 ];
 
-// Adjust these if your image circle is not exactly centered.
-const compass = {
-  centerX: 600,
-  centerY: 600,
-  radius: 390
-};
-
 image.onload = () => {
   buildManualInputs();
   drawCompass();
@@ -122,7 +115,7 @@ const points = values.map(axis => {
 
   ctx.beginPath();
 
-  outerPoints.forEach((point, index) => {
+  points.forEach((point, index) => {
     if (index === 0) ctx.moveTo(point.x, point.y);
     else ctx.lineTo(point.x, point.y);
   });
