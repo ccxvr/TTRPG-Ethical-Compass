@@ -69,10 +69,13 @@ function buildManualInputs() {
 
     div.innerHTML = `
       <label>${axis.label}</label>
-      <div class="range-row">
-        <input type="number" min="-10" max="10" value="0" id="${axis.key}-min" />
-        <input type="number" min="-10" max="10" value="0" id="${axis.key}-max" />
-      </div>
+      <input
+        type="number"
+        min="-10"
+        max="10"
+        value="0"
+        id="${axis.key}-value"
+      />
     `;
 
     container.appendChild(div);
@@ -81,17 +84,13 @@ function buildManualInputs() {
 
 function getValuesFromInputs() {
   return axes.map(axis => {
-    let min = Number(document.getElementById(`${axis.key}-min`).value);
-    let max = Number(document.getElementById(`${axis.key}-max`).value);
+    let value = Number(
+      document.getElementById(`${axis.key}-value`).value
+    );
 
-    min = Math.max(-10, Math.min(10, min));
-    max = Math.max(-10, Math.min(10, max));
+    value = Math.max(-10, Math.min(10, value));
 
-    if (min > max) {
-      [min, max] = [max, min];
-    }
-
-    return { ...axis, min, max };
+    return { ...axis, value };
   });
 }
 
