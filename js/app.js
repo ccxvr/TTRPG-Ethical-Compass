@@ -5,50 +5,23 @@ const image = new Image();
 image.src = "assets/compass.png";
 
 const compass = {
-  centerX: 437,
-  centerY: 476
+  centerX: 626,
+  centerY: 624
 };
 
 const axes = [
-  {
-    key: "deontological",
-    label: "Deontological ↔ Utilitarian",
-    x: 437,
-    y: 204
-  },
-  {
-    key: "rational",
-    label: "Rational ↔ Emotional",
-    x: 561,
-    y: 243
-  },
-  {
-    key: "egoistic",
-    label: "Egoistic ↔ Altruistic",
-    x: 650,
-    y: 340
-  },
-  {
-    key: "shortTerm",
-    label: "Short-term ↔ Long-term",
-    x: 688,
-    y: 477
-  },
-  {
-    key: "particularist",
-    label: "Particularist ↔ Universalist",
-    x: 649,
-    y: 619
-  },
-  {
-    key: "pragmatic",
-    label: "Pragmatic ↔ Idealistic",
-    x: 559,
-    y: 709
-  }
+  { key: "deontological", label: "Deontological ↔ Utilitarian", x: 626, y: 203 },
+  { key: "rational", label: "Rational ↔ Emotional", x: 815, y: 267 },
+  { key: "egoistic", label: "Egoistic ↔ Altruistic", x: 953, y: 414 },
+  { key: "shortTerm", label: "Short-term ↔ Long-term", x: 1012, y: 624 },
+  { key: "particularist", label: "Particularist ↔ Universalist", x: 952, y: 854 },
+  { key: "pragmatic", label: "Pragmatic ↔ Idealistic", x: 815, y: 987 }
 ];
 
 image.onload = () => {
+  canvas.width = image.naturalWidth;
+  canvas.height = image.naturalHeight;
+
   buildManualInputs();
   drawCompass();
 };
