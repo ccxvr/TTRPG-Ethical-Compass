@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f5efe3;
+  color: #222;
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.canvas-wrapper {
+  width: 100%;
+}
+
+canvas {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 0 auto;
+  background: #fff8ec;
+  border: 1px solid #ccc;
+}
+
+.controls {
+  background: #fff8ec;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+.axis-control {
+  margin-bottom: 18px;
+}
+
+.axis-control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.range-row {
+  display: flex;
+  gap: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
