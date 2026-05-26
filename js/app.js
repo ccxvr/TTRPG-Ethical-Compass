@@ -4,36 +4,47 @@ const ctx = canvas.getContext("2d");
 const image = new Image();
 image.src = "assets/compass.png";
 
+const compass = {
+  centerX: 437,
+  centerY: 476
+};
+
 const axes = [
   {
     key: "deontological",
     label: "Deontological ↔ Utilitarian",
-    angleDeg: 270
+    x: 437,
+    y: 204
   },
   {
     key: "rational",
     label: "Rational ↔ Emotional",
-    angleDeg: 300
+    x: 561,
+    y: 243
   },
   {
     key: "egoistic",
     label: "Egoistic ↔ Altruistic",
-    angleDeg: 330
+    x: 650,
+    y: 340
   },
   {
     key: "shortTerm",
     label: "Short-term ↔ Long-term",
-    angleDeg: 0
+    x: 688,
+    y: 477
   },
   {
     key: "particularist",
     label: "Particularist ↔ Universalist",
-    angleDeg: 30
+    x: 649,
+    y: 619
   },
   {
     key: "pragmatic",
     label: "Pragmatic ↔ Idealistic",
-    angleDeg: 60
+    x: 559,
+    y: 709
   }
 ];
 
@@ -84,13 +95,15 @@ function getValuesFromInputs() {
   });
 }
 
-function valueToPoint(value, angleDeg) {
-  const radians = angleDeg * Math.PI / 180;
-  const distance = (value / 10) * compass.radius;
+function valueToPoint(value, axis) {
+  const scale = value / 10;
+
+  const dx = axis.x - compass.centerX;
+  const dy = axis.y - compass.centerY;
 
   return {
-    x: compass.centerX + Math.cos(radians) * distance,
-    y: compass.centerY + Math.sin(radians) * distance
+    x: compass.centerX + dx * scale,
+    y: compass.centerY + dy * scale
   };
 }
 
@@ -104,12 +117,9 @@ function drawPolygon() {
 
   const values = getValuesFromInputs();
 
-  const outerPoints = values.map(axis => {
-    const outerValue =
-      Math.abs(axis.min) > Math.abs(axis.max) ? axis.min : axis.max;
-
-    return valueToPoint(outerValue, axis.angleDeg);
-  });
+const points = values.map(axis => {
+  return valueToPoint(axis.value, axis);
+});
 
   ctx.beginPath();
 
