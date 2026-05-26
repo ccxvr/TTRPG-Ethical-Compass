@@ -104,36 +104,27 @@ function drawPolygon() {
 
   const values = getValuesFromInputs();
 
-  const minPoints = values.map(axis => valueToPoint(axis.min, axis.angleDeg));
-  const maxPoints = values.map(axis => valueToPoint(axis.max, axis.angleDeg));
-  const avgPoints = values.map(axis =>
-    valueToPoint((axis.min + axis.max) / 2, axis.angleDeg)
-  );
+  const outerPoints = values.map(axis => {
+    const outerValue =
+      Math.abs(axis.min) > Math.abs(axis.max) ? axis.min : axis.max;
 
-  const bandPoints = [...maxPoints, ...minPoints.reverse()];
+    return valueToPoint(outerValue, axis.angleDeg);
+  });
 
   ctx.beginPath();
-  bandPoints.forEach((point, index) => {
+
+  outerPoints.forEach((point, index) => {
     if (index === 0) ctx.moveTo(point.x, point.y);
     else ctx.lineTo(point.x, point.y);
   });
+
   ctx.closePath();
 
   ctx.fillStyle = "rgba(120, 40, 180, 0.25)";
-  ctx.strokeStyle = "rgba(80, 20, 140, 0.85)";
+  ctx.strokeStyle = "rgba(80, 20, 140, 0.9)";
   ctx.lineWidth = 4;
+
   ctx.fill();
-  ctx.stroke();
-
-  ctx.beginPath();
-  avgPoints.forEach((point, index) => {
-    if (index === 0) ctx.moveTo(point.x, point.y);
-    else ctx.lineTo(point.x, point.y);
-  });
-  ctx.closePath();
-
-  ctx.strokeStyle = "rgba(20, 20, 20, 0.9)";
-  ctx.lineWidth = 3;
   ctx.stroke();
 }
 
