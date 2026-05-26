@@ -185,12 +185,19 @@ function generateFromQuiz() {
 
 function applyQuizResults() {
   quizQuestions.forEach(q => {
-    const value =
-      document.getElementById(`quiz-${q.axis}`).value;
+    let value = Number(
+  document.getElementById(`quiz-${q.axis}`).value
+);
 
-    document.getElementById(
-      `${q.axis}-value`
-    ).value = value;
+// Invert specific axes whose question direction
+// is opposite to compass polarity.
+if (q.axis === "shortTerm") {
+  value *= -1;
+}
+
+document.getElementById(
+  `${q.axis}-value`
+).value = value;
   });
 
   drawPolygon();
