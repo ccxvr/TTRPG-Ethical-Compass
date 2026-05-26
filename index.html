@@ -11,6 +11,17 @@
     <h1>Ethical Compass</h1>
 
     <section class="layout">
+      <aside class="quiz-panel">
+        <div id="quizContainer" style="display:none;">
+          <h2>Quiz</h2>
+          <div id="quizQuestions"></div>
+
+          <button type="button" id="finishQuizButton">
+            Apply Results
+          </button>
+        </div>
+      </aside>
+
       <div class="canvas-wrapper">
         <canvas id="compassCanvas" width="1200" height="1200"></canvas>
       </div>
@@ -26,14 +37,6 @@
       </form>
     </section>
   </main>
-
-  <div id="quizContainer" style="display:none;">
-  <h2>Quiz</h2>
-  <div id="quizQuestions"></div>
-  <button type="button" id="finishQuizButton">
-    Apply Results
-  </button>
-</div>
 
   <script src="js/app.js"></script>
 </body>
