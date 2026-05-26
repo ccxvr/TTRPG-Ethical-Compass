@@ -68,3 +68,41 @@ button {
   padding: 10px;
   cursor: pointer;
 }
+#quizContainer {
+  margin-top: 20px;
+  max-width: 100%;
+}
+
+.quiz-question {
+  margin-bottom: 18px;
+}
+
+.quiz-question label {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.quiz-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quiz-slider-row span {
+  font-size: 0.85rem;
+  width: 55px;
+  text-align: center;
+}
+
+.quiz-slider-row input[type="range"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.quiz-value {
+  min-width: 28px;
+  text-align: center;
+  font-weight: bold;
+}
