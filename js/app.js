@@ -110,9 +110,85 @@ function downloadPNG() {
   link.click();
 }
 
+const quizQuestions = [
+  {
+    axis: "deontological",
+    text: "The method is more important than the result."
+  },
+  {
+    axis: "rational",
+    text: "Important decisions should be guided by logic more than feelings."
+  },
+  {
+    axis: "egoistic",
+    text: "You should prioritize your own interests over others."
+  },
+  {
+    axis: "shortTerm",
+    text: "Long-term consequences matter more than immediate outcomes."
+  },
+  {
+    axis: "particularist",
+    text: "Moral duties toward family, friends, or your group are more important than duties toward strangers."
+  },
+  {
+    axis: "pragmatic",
+    text: "Compromising your ideals is sometimes necessary to achieve meaningful goals."
+  }
+];
+
 function generateFromQuiz() {
-  alert("Quiz generation will be added later.");
+  const container = document.getElementById("quizContainer");
+  const questionsDiv = document.getElementById("quizQuestions");
+
+  questionsDiv.innerHTML = "";
+
+  quizQuestions.forEach(q => {
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <label>${q.text}</label>
+      <input
+        type="range"
+        min="-10"
+        max="10"
+        value="0"
+        step="1"
+        id="quiz-${q.axis}"
+      />
+      <span id="value-${q.axis}">0</span>
+      <hr>
+    `;
+
+    questionsDiv.appendChild(div);
+
+    const slider = document.getElementById(`quiz-${q.axis}`);
+    const valueText = document.getElementById(`value-${q.axis}`);
+
+    slider.addEventListener("input", () => {
+      valueText.textContent = slider.value;
+    });
+  });
+
+  container.style.display = "block";
 }
+
+function applyQuizResults() {
+  quizQuestions.forEach(q => {
+    const value =
+      document.getElementById(`quiz-${q.axis}`).value;
+
+    document.getElementById(
+      `${q.axis}-value`
+    ).value = value;
+  });
+
+  drawPolygon();
+}
+
+document
+  .getElementById("finishQuizButton")
+  .addEventListener("click", applyQuizResults);
 
 document.getElementById("drawButton").addEventListener("click", drawPolygon);
 document.getElementById("downloadButton").addEventListener("click", downloadPNG);
